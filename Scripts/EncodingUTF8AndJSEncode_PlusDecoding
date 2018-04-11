@@ -1,0 +1,33 @@
+var jsEncode = {
+               encode: function (s, k) {
+                              var enc = "";
+                              var str = "";
+                              // make sure that input is string
+                              str = s.toString();
+                              for (var i = 0; i < s.length; i++) {
+                                             // create block
+                                             var a = s.charCodeAt(i);
+                                             // bitwise XOR
+                                             var b = a ^ k;
+                                             enc = enc + String.fromCharCode(b);
+                              }
+                              return enc;
+               }
+};
+
+name_before_ut8 = encodeURI("Thanasis Αθανασιος 123");
+var name = name_before_ut8;
+console.log("name: " + name);
+var nameWithBTOA = window.btoa(name);
+console.log("nameWithBTOA: " + nameWithBTOA);
+var e = jsEncode.encode(nameWithBTOA,"123");
+console.log("e with jsEncode: " + e);
+
+ 
+
+var d = jsEncode.encode(e,"123");
+console.log("d with jsEncode: " + d);
+var nameWithATOB = window.atob(d);
+console.log("nameWithATOB: " + nameWithATOB);
+var name_translated_fromutf8 = decodeURI(nameWithATOB);
+console.log("name_translated_fromutf8: " + name_translated_fromutf8);

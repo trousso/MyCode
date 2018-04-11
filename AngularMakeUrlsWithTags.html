@@ -1,0 +1,284 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Tagging</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<style>
+	body{background: #ebebeb;}
+	.content{margin:0 auto;width:500px;max-width:500px;}
+	.wrapper{font-family: 'Roboto', sans-serif;line-height: 14px;font-size:14px;font-weight:500;}
+	.header_url{font-family: 'Roboto', sans-serif;line-height: 0px;font-size:20px;font-weight:700;    text-align: center;}
+	.destination_input{    width: 100%;
+    height: 30px;
+    line-height: normal;
+		color: #5f5e5e !important;font-size:18px;
+	}
+	.link_with_tag{text-align:left;    word-break: break-all; text-align: justify;}
+input[type=text]{border:none;border-bottom: 1px solid rgba(0,0,0,1.00);color:rgba(66,65,65,1.00);font-size:18px;width: 100%;color: #8a8a8a;}
+input[type=text]:focus{border:none;border-bottom: 1px solid rgba(13,38,139,1);outline: none;outline: none;background-color:#ffffff;}
+input[type=select]:focus{border:none;border-bottom: 1px solid rgba(13,38,139,1);outline: none;outline: none;}
+	
+	.input_text{font-size:23px;line-height: normal;}
+	#create_campaign_name{font-size:15px; cursor: pointer;text-decoration: underline;}
+	
+	.hide-class-than{
+   visibility: hidden;display: none;}
+	
+	.show-class-than{
+visibility:visible;display: block;}		
+	
+	.hide_class_all_links{visibility: hidden;display: none;}
+	.show_class_all_links{visibility:visible;display: block;}
+	
+	.button_tagging{text-decoration:none;cursor:pointer;background-color: #ffb734;text-align:center;padding:10px;font-weight: bold;     color: #5f5e5e;
+    font-size: 18px;}
+	.button_tagging:hover{background-color: #ffc55c;}
+	.left_side{   position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 300px;
+    height: 100%;
+    padding: 0px 10px 10px 10px;border:1px solid #ccc;background-color:#ffffff;overflow-y: scroll;
+	}
+	.all_links{width:550px;padding: 0px 10px 10px 10px;border:1px solid #ccc;background-color:#ffffff;position: absolute;top:0px; margin: 0 auto;}
+	@media only screen and (min-width: 0px) and (max-width: 1500px) {.all_links{margin: 0; left:450px;}}
+	
+</style>
+</head>
+
+<body>
+<div class="content">
+<div class="wrapper">
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+<div class="left_side">
+<p class="input_text">Destination URL: <input type="text" ng-model="destination_url"></p>
+<p class="input_text" ng-init="myVar = true" ng-class="class">Campaign Name: <input type="text" ng-model="campaign" class="destination_input" ></p>
+
+
+
+
+<p class="input_text" ng-init="myVar2 = true" ng-class="class2">Date Campaign: <input type="text" ng-model="datecampaign" class="destination_input" placeholder="MM-yyyy">
+</p>
+<p class="input_text"ng-init="myVar2 = true" ng-class="class2">Brand Campaign: 
+<select ng-model="brandcampaign" class="destination_input">
+			    <option value=""></option>
+			    <option value="ace_">Ace</option>
+			    <option value="always_">Always</option>
+			    <option value="ambi_pur_">Ambi pur</option>
+			    <option value="ariel_">Ariel</option>
+			    <option value="aussie_">Aussie</option>    
+			    <option value="braun_">Braun</option>
+			    <option value="duracell_">Duracell</option>
+			    <option value="fairy_">Fairy</option>
+			    <option value="gillette_">Gillette</option>
+			    <option value="head_shoulders_">Head &amp; shoulders</option>
+			    <option value="herbal_essences_">Herbal essences</option>
+			    <option value="koleston_">Koleston</option>   
+			    <option value="lenor_">Lenor</option>   
+			    <option value="max_factor_">Max factor</option>
+			    <option value="mr_proper_">Mr. proper</option>
+			    <option value="noxzema_">Noxzema</option>
+			    <option value="olay_">Olay</option>
+			    <option value="oral_b_">Oral b</option>
+			    <option value="pampers_">Pampers</option>
+			    <option value="pantene_">Pantene</option>
+			    <option value="swiffer_">Swiffer</option>
+			    <option value="venus_">Venus</option>
+			    <option value="viakal_">Viakal</option>
+			    <option value="vicks_">Vicks</option>
+			    <option value="wash_go_">Wash &amp; go</option>
+			    <option value="wella_">Wella</option>
+			    <option value="wellaflex_">Wellaflex</option>
+                <option value="ghh_">GHH</option>
+	  </select>
+</p>
+<p class="input_text" ng-init="myVar2 = true" ng-class="class2">Kind of Campaign: 
+<select  ng-model="kindcampaign" class="destination_input" >
+		      <option value=""></option>
+		      <option value="brand_">Brand</option>
+		      <option value="game_">Game</option>
+		      <option value="offer_">Offer</option>
+		      <option value="questionnaire_">Questionnaire</option>
+		      <option value="sampling_">Sampling</option>
+              <option value="article_">Article</option>
+      </select>
+</p>
+
+<p id="create_campaign_name" ng-click="changeClass();changeClass2(); change_campaign_name();change_text_content()"  ng-model="text_know">{{ text_know }}</p>
+
+
+
+<p id="text_see_links" ng-click="changeClassalllinks();see_links();"  ng-model="text_see_links" class="button_tagging">{{ text_see_links }}</p>
+
+<p onClick="CopyClipboard();" class="button_tagging">Copy to Clipboard</p>
+
+<div style="border:1px solid #000;width: 100%;margin: 30px 0px 30px 0px;"></div>
+<div class="choice_which_links_you_want" style="width:100%;">
+<p>Newsletter: <input type="checkbox" ng-model="nsl_link" ng-init="nsl_link = true" style="float:right;cursor:pointer;"></p>
+<p>Facebook organic: <input type="checkbox" ng-model="fb_link" ng-init="fb_link = true" style="float:right;cursor:pointer;"></p>
+<p>Facebook Paid Post: <input type="checkbox" ng-model="fb_ad" ng-init="fb_ad = true" style="float:right;cursor:pointer;"></p>
+<p>iMedia: <input type="checkbox" ng-model="imedia" ng-init="imedia = true" style="float:right;cursor:pointer;"></p>
+<p>Youtube: <input type="checkbox" ng-model="ytlink" ng-init="ytlink = true" style="float:right;cursor:pointer;"></p>
+<p>Mobile iMedia: <input type="checkbox" ng-model="mobilelink" ng-init="mobilelink = true" style="float:right;cursor:pointer;"></p>
+<p>Upaid link from other sites: <input type="checkbox" ng-model="unpaidlink" ng-init="unpaidlink = true" style="float:right;cursor:pointer;"></p>
+<p>Antenna.gr: <input type="checkbox" ng-model="antennalink" ng-init="antennalink = true" style="float:right;cursor:pointer;"></p>
+<p>Megatv: <input type="checkbox" ng-model="megalink" ng-init="megalink = true" style="float:right;cursor:pointer;"></p>
+<p>Startv: <input type="checkbox" ng-model="starlink" ng-init="starlink = true" style="float:right;cursor:pointer;"></p>
+<p>Alphatv: <input type="checkbox" ng-model="alphalink" ng-init="alphalink = true" style="float:right;cursor:pointer;"></p>
+<p>Outlook: <input type="checkbox" ng-model="outlooklink" ng-init="outlooklink = true" style="float:right;cursor:pointer;"></p>
+<p>Yahoo: <input type="checkbox" ng-model="yahoolink" ng-init="yahoolink = true" style="float:right;cursor:pointer;"></p>
+<p>Skype: <input type="checkbox" ng-model="skypelink" ng-init="skypelink = true" style="float:right;cursor:pointer;"></p>
+
+	
+	
+</div>
+
+<p>Hawkeye Link: <input type="checkbox" ng-model="hklinks" ng-init="hklinks = false" style="float:right;cursor:pointer;"></p>
+<p class="input_text" ng-if="hklinks">SiteName Hawkeye: <input type="text" ng-model="sitename1" class="destination_input" placeholder="Site Name for Hawkeye"></p>
+
+</div>
+
+<div class="all_links" ng-class="class_links" id="to-copy" style=""
+ >
+  <p class="header_url" ng-if="nsl_link" >Newsletter link</p>
+  <span class="link_with_tag" ng-if="nsl_link" >{{ destination_url }}?utm_medium=email&amp;utm_source=nsl&amp;utm_campaign={{ campaign }}{{ brandcampaign }}{{ kindcampaign }}{{ datecampaign }}&1CP_LK=[+PROFILE('LEAD_KEY','','')+]</span>
+  <p class="header_url" ng-if="fb_link">Facebook post link - organic (not paid)</p>
+  <span class="link_with_tag" ng-if="fb_link">{{ destination_url }}?utm_medium=social&amp;utm_source=facebook&amp;utm_campaign={{ campaign }}{{ brandcampaign }}{{ kindcampaign }}{{ datecampaign }}</span>
+  <p class="header_url" ng-if="fb_ad">Facebook ad (paid)</p>
+  <span class="link_with_tag" ng-if="fb_ad">{{ destination_url }}?utm_medium=display&amp;utm_source=facebook&amp;utm_campaign={{ campaign }}{{ brandcampaign }}{{ kindcampaign }}{{ datecampaign }}</span>
+  <p class="header_url" ng-if="imedia">iMedia Banner link (skins, flash, billboard)</p>
+  <span class="link_with_tag" ng-if="imedia">{{ destination_url }}?utm_medium=display&amp;utm_source=imedia&amp;utm_campaign={{ campaign }}{{ brandcampaign }}{{ kindcampaign }}{{ datecampaign }}</span>
+  <p class="header_url" ng-if="ytlink">Youtube preroll link</p>
+ <span class="link_with_tag" ng-if="ytlink">{{ destination_url }}?utm_medium=video&amp;utm_source=youtube&amp;utm_campaign={{ campaign }}{{ brandcampaign }}{{ kindcampaign }}{{ datecampaign }}</span>
+  <p class="header_url" ng-if="mobilelink">Mobile iMedia Text link</p>
+  <span class="link_with_tag" ng-if="mobilelink">{{ destination_url }}?utm_medium=mobile&amp;utm_source=imedia&amp;utm_campaign={{ campaign }}{{ brandcampaign }}{{ kindcampaign }}{{ datecampaign }}</span>
+  <p class="header_url" ng-if="unpaidlink">Unpaid link from other sites</p>
+  <span class="link_with_tag" ng-if="unpaidlink">{{ destination_url }}?utm_medium=link&amp;utm_source=link&amp;utm_campaign={{ campaign }}{{ brandcampaign }}{{ kindcampaign }}{{ datecampaign }}</span>
+  <p class="header_url" ng-if="antennalink">antenna.gr/webtv</p>
+  <span class="link_with_tag" ng-if="antennalink">{{ destination_url }}?utm_medium=video&amp;utm_source=antenna&amp;utm_campaign={{ campaign }}{{ brandcampaign }}{{ kindcampaign }}{{ datecampaign }}</span>
+  <p class="header_url" ng-if="megalink">megatv.com</p>
+  <span class="link_with_tag" ng-if="megalink">{{ destination_url }}?utm_medium=video&amp;utm_source=megatv&amp;utm_campaign={{ campaign }}{{ brandcampaign }}{{ kindcampaign }}{{ datecampaign }}</span>
+  <p class="header_url" ng-if="starlink">startv.gr</p>
+  <span class="link_with_tag" ng-if="starlink">{{ destination_url }}?utm_medium=video&amp;utm_source=startv&amp;utm_campaign={{ campaign }}{{ brandcampaign }}{{ kindcampaign }}{{ datecampaign }}</span>
+  <p class="header_url" ng-if="alphalink">alphatv.gr</p>
+  <span class="link_with_tag" ng-if="alphalink">{{ destination_url }}?utm_medium=video&amp;utm_source=alphatv&amp;utm_campaign={{ campaign }}{{ brandcampaign }}{{ kindcampaign }}{{ datecampaign }}</span>
+  <p class="header_url" ng-if="outlooklink">Outlook</p>
+  <span class="link_with_tag" ng-if="outlooklink">{{ destination_url }}?utm_medium=display&amp;utm_source=outlook&amp;utm_campaign={{ campaign }}{{ brandcampaign }}{{ kindcampaign }}{{ datecampaign }}</span>
+  <p class="header_url" ng-if="yahoolink">Yahoo</p>
+   <span class="link_with_tag" ng-if="yahoolink">{{ destination_url }}?utm_medium=display&amp;utm_source=yahoo&amp;utm_campaign={{ campaign }}{{ brandcampaign }}{{ kindcampaign }}{{ datecampaign }}</span>
+  <p class="header_url" ng-if="skypelink">Skype</p>
+   <span class="link_with_tag" ng-if="skypelink">{{ destination_url }}?utm_medium=display&amp;utm_source=skype&amp;utm_campaign={{ campaign }}{{ brandcampaign }}{{ kindcampaign }}{{ datecampaign }}</span>
+  <p class="header_url" ng-if="hklinks">Hawkeye -Public Ad Exchange Display</p>
+  <span class="link_with_tag" ng-if="hklinks">{{ destination_url }}?utm_source=asci-allocated&amp;utm_medium=display&amp;utm_campaign={{ campaign }}{{ brandcampaign }}{{ kindcampaign }}{{ datecampaign }}-h </span>
+  <p class="header_url" ng-if="hklinks">Hawkeye -Public Ad Exchange Mobile</p>
+  <span class="link_with_tag" ng-if="hklinks">{{ destination_url }}?utm_source=asci-allocated&amp;utm_medium=mobile&amp;utm_campaign={{ campaign }}{{ brandcampaign }}{{ kindcampaign }}{{ datecampaign }}-h </span>
+  <p class="header_url" ng-if="hklinks">Hawkeye -Public Ad Exchange Video</p>
+  <span class="link_with_tag" ng-if="hklinks">{{ destination_url }}?utm_source=asci-allocated&amp;utm_medium=video&amp;utm_campaign={{ campaign }}{{ brandcampaign }}{{ kindcampaign }}{{ datecampaign }}-h </span>
+  <p class="header_url" ng-if="hklinks">Hawkeye - DIRECT Display {{ sitename1 }}</p>
+  <span class="link_with_tag" ng-if="hklinks">{{ destination_url }}?utm_source=asci-directintent-{{ sitename1 }}&amp;utm_medium=display&amp;utm_campaign={{ campaign }}{{ brandcampaign }}{{ kindcampaign }}{{ datecampaign }}-h </span>
+  <p class="header_url" ng-if="hklinks">Hawkeye - DIRECT Mobile {{ sitename1 }}</p>
+  <span class="link_with_tag" ng-if="hklinks">{{ destination_url }}?utm_source=asci-directintent-{{ sitename1 }}&amp;utm_medium=mobile&amp;utm_campaign={{ campaign }}-h </span>
+  <p class="header_url" ng-if="hklinks">Hawkeye - DIRECT Video {{ sitename1 }}</p>
+  <span class="link_with_tag" ng-if="hklinks">{{ destination_url }}?utm_source=asci-directintent-{{ sitename1 }}&amp;utm_medium=video&amp;utm_campaign={{ campaign }}{{ brandcampaign }}{{ kindcampaign }}{{ datecampaign }}-h</span>
+  <span class="link_with_tag" ng-if="hklinks">{{ destination_url }}?utm_source=asci-directintent-{{ sitename1 }}&amp;utm_medium=video&amp;utm_campaign={{ campaign }}{{ brandcampaign }}{{ kindcampaign }}{{ datecampaign }}-h</span>
+ 
+</div>
+
+</div>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	$scope.sitename1 = "";
+    $scope.destination_url = "";
+	$scope.campaign = ""; 
+
+    
+	
+	$scope.text_know = "Ooops! I don't know the name of the campaign!";
+	$scope.text_see_links = "Open Links ❱";
+	
+$scope.class = "show-class-than";
+  $scope.changeClass = function(){	  
+    if ($scope.class === "show-class-than")	
+      $scope.class = "hide-class-than";	  
+	   else
+      $scope.class = "show-class-than";
+	    };	
+	
+$scope.class2 = "hide-class-than";
+  $scope.changeClass2 = function(){
+    if ($scope.class2 === "hide-class-than")
+      $scope.class2 = "show-class-than";
+    else
+      $scope.class2 = "hide-class-than";
+	  
+  };
+
+$scope.change_campaign_name = function() {
+        $scope.campaign = null;
+	$scope.campaign_two = null;
+		$scope.brandcampaign = null;
+		$scope.kindcampaign = null;
+		$scope.datecampaign = null;
+	$scope.campaign = null;
+    };
+	
+$scope.change_text_content = function(){
+	if ($scope.text_know === "Ooops! I don't know the name of the campaign!")
+		$scope.text_know = "Finally, I know the name of the campaign";
+	else
+		$scope.text_know = "Ooops! I don't know the name of the campaign!";
+};
+	
+	$scope.see_links = function(){
+	if ($scope.text_see_links === "Open Links ❱")
+		$scope.text_see_links = "❰ Close Links";
+	else
+		$scope.text_see_links = "Open Links ❱";
+};
+	/**/
+	
+	$scope.class_links = "hide_class_all_links";
+	$scope.changeClassalllinks= function() {
+		 if ($scope.class_links === "hide_class_all_links")
+      $scope.class_links = "show_class_all_links";
+    else
+      $scope.class_links = "hide_class_all_links";
+	};
+	
+
+	
+	/**/
+});
+	
+
+
+</script>
+<script>
+function CopyClipboard(){
+  // creating new textarea element and giveing it id 't'
+  let t = document.createElement('textarea')
+  t.id = 't'
+  // Optional step to make less noise in the page, if any!
+  t.style.height = 0
+  // You have to append it to your page somewhere, I chose <body>
+  document.body.appendChild(t)
+  // Copy whatever is in your div to our new textarea
+  t.value = document.getElementById('to-copy').innerText
+  // Now copy whatever inside the textarea to clipboard
+  let selector = document.querySelector('#t')
+  selector.select()
+  document.execCommand('copy')
+  // Remove the textarea
+  document.body.removeChild(t)
+}
+</script>
+</body>
+</html>

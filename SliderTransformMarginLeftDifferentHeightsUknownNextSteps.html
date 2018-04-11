@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"/></script>
+</head>
+<style>
+.wrapper {
+	max-width: 1180px;
+	overflow: hidden;
+	margin: 0 auto;
+}
+.container {
+	display: inline-block;
+	transition: .4s;
+}
+.content {
+	float: left;
+	transition: .4s;
+	-webkit-transition: .4s;
+	height:10px;
+	background-color:yellow;
+}
+.content.active { 
+	height:auto;
+}
+.previous, .next {
+	cursor: pointer;
+}
+.display-none {
+	display: none;
+}
+.nextBtn, .previousBtn{cursor:pointer;}
+</style>
+<body >
+<div class="wrapper">
+	<div class="container">
+		<div class="content active">
+		1
+		<br/>
+		<div class="nextBtn">Next CTA</div>
+		</div>
+		<div class="content">
+		2
+		<br/>
+		<div class="previousBtn">Previous CTA</div>
+		<div class="nextBtn">Next CTA</div>
+		</div>
+		<div class="content">
+		3
+		<br/>
+		<div class="previousBtn">Previous CTA</div>
+		<div class="nextBtn">Next CTA</div>
+		</div>
+		<div class="content">
+		4
+		<br/>LoremIpsum
+		<br/>
+		<div class="previousBtn">Previous CTA</div>
+		<div class="nextBtn">Next CTA</div>
+		</div>
+		<div class="content display-none">
+		5
+		<br/>
+		<div class="previousBtn">Previous CTA</div>
+		<div class="nextBtn">Next CTA</div>
+		</div>
+		<div class="content display-none">
+		6
+		<br/>
+		<div class="previousBtn">Previous CTA</div>
+		<div class="nextBtn">Next CTA</div>
+		</div>
+		<div class="content">
+		7
+		<br/>
+		<div class="previousBtn">Previous CTA</div>
+		<div class="nextBtn">Next CTA</div>
+		</div>
+		<div class="content">
+		8
+		<br/>
+		<div class="previousBtn">Previous CTA</div>
+		
+		</div>
+	</div>
+</div>
+
+<script>
+function InitialiseSlider(){	
+
+			total_contents_user_login = "";
+			where_is_active_user_login = "";
+			each_content_width_user_login = "";
+			total_contents_user_login = $(".content").length;
+			margin_for_slider_user_login = "";
+			length_container = total_contents_user_login*100 + "%";
+			$(".container").css("width" , length_container);
+			each_content_width_user_login = 100/total_contents_user_login + "%";
+			$(".content").css("width",each_content_width_user_login);
+			number_margin_user_login = "-" + $('.content.active').index()*100;
+			margin_for_slider_user_login ="0%";
+			$(".container").css("margin-left", margin_for_slider_user_login );
+			$(".temporaryOpacityClass").removeClass("temporaryOpacityClass");
+		}
+			
+			function GoNext(){
+				number_margin_user_login = number_margin_user_login - "100";
+				margin_for_slider_user_login = number_margin_user_login + "%";
+				$(".container").css("margin-left", margin_for_slider_user_login );				
+				$(".active").removeClass("active").next( ".content" ).addClass("active");
+				checkifActiveNone=$(".active").hasClass("display-none");
+				while (checkifActiveNone) {
+					$(".active").removeClass("active").next( ".content" ).addClass("active");
+					checkifActiveNone=$(".active").hasClass("display-none");
+				}
+						
+			}
+			function GoPrevious(){
+				number_margin_user_login = number_margin_user_login + 100;
+				margin_for_slider_user_login = number_margin_user_login + "%";
+				$(".container").css("margin-left", margin_for_slider_user_login );
+				$(".active").removeClass("active").prev( ".content" ).addClass("active");
+				checkifActiveNone=$(".active").hasClass("display-none");
+				while (checkifActiveNone) {
+					$(".active").removeClass("active").prev( ".content" ).addClass("active");
+					checkifActiveNone=$(".active").hasClass("display-none");
+					}
+				
+			}
+			$(document).ready(function(){
+			InitialiseSlider();
+			})
+			$(".nextBtn").on("click",function(){
+			GoNext();
+			})
+			$(".previousBtn").on("click",function(){
+			GoPrevious();
+			})
+</script>
+</body>
+</html>

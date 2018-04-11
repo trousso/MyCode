@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Div For Each Letter</title>
+</head>
+<style>
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<body>
+	<div class='forAllLetters'></div>
+	
+<script>
+var s = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
+
+for (var i = 0; i < s.length; i++) {
+    console.log(s.charAt(i));
+               testing = "<div class='forEachLetter'>" + s.charAt(i) + "</div>"
+               $(testing).appendTo( $( ".forAllLetters" ) );
+               console.log(i);
+}
+</script>
+</body>
+</html>

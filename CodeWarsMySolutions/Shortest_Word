@@ -1,0 +1,22 @@
+function findShort(s){	
+		var str = s.split(" ");
+		var MyArr = [];
+		
+		for (var i = 0; i < str.length; i++) {
+		    MyArr[i] = str[i].length; 
+		  }
+		
+		  var lowestNum = MyArr[0]; 
+  for (var j = 0; j < MyArr.length; j++) {
+    if (MyArr[j] < lowestNum) {
+      lowestNum = MyArr[j]; 
+    }
+  }
+		return lowestNum;
+}
+
+/*
+Simple, given a string of words, return the length of the shortest word(s).
+
+String will never be empty and you do not need to account for different data types.
+*/

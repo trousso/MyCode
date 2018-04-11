@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+<style>
+	.firstclassforequal{
+		background-color:#ebebeb;
+	}
+	.secondclassforequal{
+		background-color:skyblue;color:#000;font-weight:bold;
+	}
+</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<body>
+	
+	<div class="firstclassforequal" data-checkequalheight="true" data-classnameforequal=".firstclassforequal">
+	Lorem Ipsum is simply dummy<br/>dummy<br/>
+	</div>
+	
+	<br/>
+	
+	<div class="firstclassforequal" data-checkequalheight="true" data-classnameforequal=".firstclassforequal">
+	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged
+	</div>
+	
+	<br/>
+	
+	
+	<div class="firstclassforequal checkequaldiv" data-checkequalheight="true" data-classnameforequal=".firstclassforequal">
+	dummy
+	</div>
+	
+	
+	
+	<div class="secondclassforequal" data-checkequalheight="true" data-classnameforequal=".secondclassforequal">
+	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer<br/>took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged<br/>
+	</div>
+	
+	<br/>
+	
+	<div class="secondclassforequal checkequaldiv" data-checkequalheight="true" data-classnameforequal=".secondclassforequal">
+	Lorem Ipsum is<br/>simply dummy text of the printing and typesetting industry.<br/>. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer<br/>took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged<br/>Lorem<br/>Ipsum<br/>has been the industry's<br/>
+	</div>
+	
+	<br/>
+	
+	
+	<div class="secondclassforequal" data-checkequalheight="true" data-classnameforequal=".secondclassforequal">
+	simply<br/>simply<br/>
+	</div>
+	
+<script>
+	
+function EqualHeightsSecondWay(){
+	$(".checkequaldiv").each(function() {
+		var checkequal = $(this).data("checkequalheight");
+		if (checkequal) {
+			classForEqualH = $(this).data("classnameforequal");
+			EqualHeightsDiv(classForEqualH);
+		}
+	})
+	function EqualHeightsDiv(classForEqualH) {
+		var maxHeight = 0;
+		selectclassForEqualH = "$('" + classForEqualH + "')";
+		
+		console.log(selectclassForEqualH);
+		$(classForEqualH).each(function() {
+		$(classForEqualH).height("auto");
+			if ($(this).height() > maxHeight) {
+				maxHeight = $(this).height();
+			}
+		});
+		$(classForEqualH).height(maxHeight);
+
+	}
+}
+$( document ).ready(function() {
+   EqualHeightsSecondWay();	
+});
+$(window).resize(function() {
+   EqualHeightsSecondWay();	
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+function getMiddle(s)
+{
+  	var str = s ;
+		lengthtesting = str.length;
+		halftesting = lengthtesting/2;
+		halftestingminusOne =halftesting-1;
+		ypoloipo = lengthtesting%2;
+	  if (ypoloipo==0){
+		finalWord =str.substr(halftestingminusOne,2);
+		return finalWord;
+	  }
+	  if (ypoloipo==1){
+		lengthplusonehalf = (lengthtesting+1)/2;
+		  finalWord =str.substr(halftesting,1);
+	return finalWord;
+	  }
+}

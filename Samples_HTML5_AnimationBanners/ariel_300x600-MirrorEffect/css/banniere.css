@@ -1,0 +1,81 @@
+html, body, div, img, a, span {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	font-size: 100%;
+	vertical-align: baseline;
+	text-decoration: none;
+}
+button {
+	background-color: transparent;
+	border: none;
+	color: #FFF;
+	cursor: pointer;
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	outline: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	user-select: none;
+}
+button:hover, button:active {
+}
+button:active {
+	font-size: 11px;
+}
+.button {
+	height: 600px;
+	width: 300px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+#banniere {
+	position: relative;
+	background-color: #fff;
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	line-height: 1;
+	width: 300px;
+	height: 600px;
+	overflow: hidden;
+}
+.alignleft {
+	text-align: left;
+}
+.alignright {
+	text-align: right;
+}
+.blanc {
+	background-color: #fff;
+}
+#bg{
+	position: absolute;
+	top:0px;
+	left: 0px;
+}
+#cta{
+position: absolute;
+    top: 387px;
+    left: 20px;
+}
+#price{
+position: absolute;
+    top: 49px;
+    left: 73px;
+}
+#price_mirror{
+position: absolute;
+    top: 49px;
+    left: 73px;
+}
+#text{
+    position: absolute;
+    top: 335px;
+    left: 78px;
+}
+#packshot{
+position: absolute;
+    top: 157px;
+    left: 11px;
+}

@@ -1,0 +1,142 @@
+html, body, div, img, a, span {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	font-size: 100%;
+	vertical-align: baseline;
+	text-decoration: none;
+}
+button {
+	background-color: transparent;
+	border: none;
+	color: #FFF;
+	cursor: pointer;
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	outline: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	user-select: none;
+}
+button:hover, button:active {
+}
+button:active {
+	font-size: 11px;
+}
+.button {
+	height: 250px;
+	width: 300px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+#banniere {
+	position: relative;
+	background-color: #e1e1e1;
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	line-height: 1;
+	width: 300px;
+	height: 250px;
+	background-color:#000;
+	overflow: hidden;
+	
+}
+
+
+
+#bg{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+#pack{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+#price{
+    position: absolute;
+    top: -73px;
+    left: 39px;
+}
+#star{
+position: absolute;
+    top: -77px;
+    left: 36px;
+}
+.box11{
+	position: absolute;
+    top: 147px;
+    left: 31px;
+
+	width: 244px;
+	height:28px;
+	overflow:hidden;
+}
+#text11{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.box12{
+	position: absolute;
+    top: 175px;
+    left: 90px;
+	width: 244px;
+	height:28px;
+	overflow:hidden;
+}
+#text12{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.box21{
+	position: absolute;
+     top: 147px;
+    left: 11px;
+	width: 280px;
+	height:28px;
+	overflow:hidden;
+}
+#text21{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.box22{
+	position: absolute;
+    top: 172px;
+    left: 55px;
+	width: 244px;
+	height:28px;
+	overflow:hidden;
+}
+#image22{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+#cta{
+    position: absolute;
+    top: 194px;
+    left: 44px;
+
+}
+#logo{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

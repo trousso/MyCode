@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>AnimatedDiv follows the cursor with delay</title>
+<style>
+body,html{cursor:default;}
+.animatedDiv{
+		position:absolute;
+		border-radius:50%;
+		background-color:#000;
+		width:25px;
+		height:25px;
+		-webkit-animation: movingwithmouse 1.5s linear infinite; /* Safari 4.0 - 8.0 */
+    	animation: movingwithmouse 1.5s linear infinite;opacity:0;transform:scale(1);
+  transition-delay:.5s;
+  transition:.5s;
+  transition-timing-function:ease-out;
+  z-index:999999;
+}
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes movingwithmouse {
+    0% {opacity:0.5;transform:scale(1)}
+    50% {opacity: 1;transform:scale(0.75)}
+	100% {opacity:0.5;transform:scale(1)}
+}
+@keyframes movingwithmouse {
+  0% {opacity:0.5;transform:scale(1)}
+    50% {opacity: 1;transform:scale(0.75)}
+	100% {opacity:0.5;transform:scale(1)}
+}
+.hidden{visibility: hidden;}
+.thanr{padding:10px 10px;border:1px solid #005e7c;color:#005e7c;max-width:500px;margin:50px auto;text-align:center;font-size:20px;transition:.5s;
+  transition-timing-function:ease-in;}
+.thanr:hover{cursor:pointer;transition:.5s;
+  transition-timing-function:ease-in-out;/*background-color:#005e7c;*/color:#fff;/*font-size:25px;max-width:275px;padding:20px 0px;*/}
+.thanr-hover {
+    color: #000;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    max-width: 200px;
+    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+    padding: 10px 20px;
+}
+.thanr-hover {
+    color: #000;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    max-width: 200px;
+    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+    padding: 10px 20px;
+}
+.thanr-hover:hover {
+    color: #fff !important;
+}
+.thanr-hover:hover:before {
+    left: 0%;
+    right: auto;
+    width: 100%;
+}
+.thanr-hover:before {
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 100%;
+    width: 0px;
+    z-index: -1;
+    content: '';
+    color: #000 !important;
+    background: linear-gradient(to right, #003399 0%, #0099ff 100%);
+    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<p class="animatedDiv hidden"></p>
+<div class="thanr thanr-hover">Click</div>
+<script>
+$(document).on('mousemove', function(e){
+    $('.animatedDiv').css({
+       left:  e.pageX,
+       top:   e.pageY
+    });	
+});
+$(".thanr").on("click",function(){
+  alert("sobrero");
+})
+$(function() {
+    var $window = $(window),
+        $html = $('html');
+    $window.on('mouseleave', function(event) {
+        if (!$html.is(event.target))
+            return;
+        $('.animatedDiv').addClass('hidden');
+    });
+    $window.on('mouseenter', function(event) {
+        $('.animatedDiv').removeClass('hidden');
+    });
+});
+</script>
+</body>
+</html>
